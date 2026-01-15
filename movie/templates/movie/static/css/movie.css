@@ -1,0 +1,16 @@
+.row.content {height: 1500px}
+
+.sidenav {
+    background-color: #4ac1f7;
+    min-height: 100vh;
+    padding-top: 20px;
+}
+
+
+footer {
+    background-color: #006b1b;
+    color:white;
+    padding:15px;
+    text-align: center;
+}
+

@@ -1,4 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from django.utils import timezone
+from .models import Movie
 
-def post_list(request):
-    return render(request, 'movie/post_list.html', {})
+def movie_list(request):
+    movies = Movie.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    return render(request, 'movie/movie_list.html', {'movies': movies})
+
+def movie_detail(request, pk):
+    movie = get_object_or_404(Movie, pk=pk)
+    return render(request, 'movie/movie_detail.html', {'movie': movie})

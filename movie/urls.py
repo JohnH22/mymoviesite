@@ -1,6 +1,8 @@
 from django.urls import path
 from . import views
+from movie import views
 
 urlpatterns = [
-    path('', views.post_list, name='post_list'),
+    path('', views.movie_list, name='movie_list'),
+    path('movie/<int:pk>/', views.movie_detail, name='movie_detail')
 ]

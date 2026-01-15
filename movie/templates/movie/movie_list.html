@@ -1,0 +1,13 @@
+{% extends 'movie/base.html' %}
+
+{% block content %}
+<h4><small>RECENT MOVIES</small></h4>
+    <hr>
+        {% for movie in movies %}
+            <div>
+                <h2><a href="{% url 'movie_detail' pk=movie.pk %}">{{ movie.title }}</a></h2>
+                <h5><span class="bi bi-clock-history"></span> {{ movie.published_date }}</h5>
+                <p>{{ movie.text|linebreaksbr }}</p>
+            </div>
+        {% endfor %}
+{% endblock content %}
