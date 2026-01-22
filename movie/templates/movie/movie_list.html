@@ -6,8 +6,15 @@
         {% for movie in movies %}
             <div>
                 <h2><a href="{% url 'movie_detail' pk=movie.pk %}">{{ movie.title }}</a></h2>
-                <h5><span class="bi bi-clock-history"></span> {{ movie.published_date }}</h5>
+                <h5><span><i class="bi bi-calendar2-check movie-list-published-icon"></i></span> {{ movie.published_date }}</h5>
+                {% if movie.category %}
+                <h5><span><i class="bi bi-camera-reels movie-list-category-icon"></i> {{ movie.category }} </span></h5><br>
+                {% endif %}
+                <h5><span><i class="bi bi-person-workspace movie-list-written-by-icon"></i></span> Written by {{ movie.author }}</h5>
+                {% if movie.image %} <img class="movie-list-img" src="{{ movie.image.url }}"/> {% endif %}
                 <p>{{ movie.text|linebreaksbr }}</p>
+                <div style="clear: both"></div>
+                <hr>
             </div>
         {% endfor %}
 {% endblock content %}

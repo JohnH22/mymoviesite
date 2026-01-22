@@ -2,14 +2,14 @@
 
 {% block content %}
     <div class="movie">
-        {% if movie.published_date %}
-        {% endif %}
         <h2>{{ movie.title }}</h2>
-        {% if movie.published_date %}
-        <div class="date">
-            {{ movie.published_date }}
-        </div>
+        <h5><span></span> {{ movie.published_date }}</h5>
+        {% if movie.category %}
+            <h5><span>{{ movie.category }}</span></h5><br>
         {% endif %}
+        <h5><span></span> Written by {{ movie.author }}</h5>
+        {% if movie.image %} <img class="movie-detail-main-img" src="{{ movie.image.url }}" /> {% endif %}
         <p>{{ movie.text|linebreaksbr }}</p>
+        <hr>
     </div>
 {% endblock content %}
