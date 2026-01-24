@@ -4,12 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8bc43646-48f8-47be-a687-1ff153f64042" name="Changes" comment="Added new model on models.py named Category, updated it on admin.py , changed movie_detail.html and movie_list.html(the detailed movie view and general movie list view) , filtered Movies based on category on views.py , installed Pillow library for images and added it through a media directory in the settings.py , updated movie/urls.py , made migrations, added bootstrap icons for published date , category and author, made some CSS and tried to fixed layouts on elements.">
-      <change afterPath="$PROJECT_DIR$/movie/templates/movie/about_us.html" afterDir="false" />
+    <list default="true" id="8bc43646-48f8-47be-a687-1ff153f64042" name="Changes" comment="Added search text box on left side of page, created about_us.html ,relocated about_us.html to the correct path templates/movie/directory,updated views.py to use Django Q for search on title or text, created small test layout for about us page.">
+      <change afterPath="$PROJECT_DIR$/movie/migrations/0004_director_movie_director.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/movie/static/images/theater.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/movie/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/movie/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie/static/css/movie.css" beforeDir="false" afterPath="$PROJECT_DIR$/movie/static/css/movie.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/movie/templates/movie/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/movie/templates/movie/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie/templates/movie/movie_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/movie/templates/movie/movie_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie/templates/movie/static/css/movie.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/movie/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/movie/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movie/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/movie/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,7 +69,7 @@
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.pycharm.django.structure.promotion.once.per.project&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/PyCharmProjects/mymoviesite&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/PyCharmProjects/mymoviesite/movie/static/images&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -74,6 +80,9 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\PyCharmProjects\mymoviesite\movie\static\images" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\PyCharmProjects\mymoviesite\movie\templates\movie" />
     </key>
@@ -126,7 +135,9 @@
       <workItem from="1769034297209" duration="1433000" />
       <workItem from="1769040554888" duration="61000" />
       <workItem from="1769040640990" duration="17212000" />
-      <workItem from="1769106077959" duration="9634000" />
+      <workItem from="1769106077959" duration="12191000" />
+      <workItem from="1769198091791" duration="12347000" />
+      <workItem from="1769221503713" duration="10573000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <option name="closed" value="true" />
@@ -168,7 +179,15 @@
       <option name="project" value="LOCAL" />
       <updated>1769057210473</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Added search text box on left side of page, created about_us.html ,relocated about_us.html to the correct path templates/movie/directory,updated views.py to use Django Q for search on title or text, created small test layout for about us page.">
+      <option name="closed" value="true" />
+      <created>1769116078820</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1769116078820</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -203,6 +222,7 @@
     <MESSAGE value="Created model Movie , made migration movie and database tables , created superuser and model Movie available at Django" />
     <MESSAGE value="Created movie/urls.py , created movie/templates/movie/post_list.html and made basic Django QuerySets,Filters,Order_by on Django Shell/Python Console" />
     <MESSAGE value="Added new model on models.py named Category, updated it on admin.py , changed movie_detail.html and movie_list.html(the detailed movie view and general movie list view) , filtered Movies based on category on views.py , installed Pillow library for images and added it through a media directory in the settings.py , updated movie/urls.py , made migrations, added bootstrap icons for published date , category and author, made some CSS and tried to fixed layouts on elements." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added new model on models.py named Category, updated it on admin.py , changed movie_detail.html and movie_list.html(the detailed movie view and general movie list view) , filtered Movies based on category on views.py , installed Pillow library for images and added it through a media directory in the settings.py , updated movie/urls.py , made migrations, added bootstrap icons for published date , category and author, made some CSS and tried to fixed layouts on elements." />
+    <MESSAGE value="Added search text box on left side of page, created about_us.html ,relocated about_us.html to the correct path templates/movie/directory,updated views.py to use Django Q for search on title or text, created small test layout for about us page." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added search text box on left side of page, created about_us.html ,relocated about_us.html to the correct path templates/movie/directory,updated views.py to use Django Q for search on title or text, created small test layout for about us page." />
   </component>
 </project>

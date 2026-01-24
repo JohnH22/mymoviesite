@@ -1,5 +1,4 @@
 from django.urls import path
-from . import views
 from movie import views
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf import settings

@@ -1,20 +1,82 @@
 {% extends 'movie/base.html' %}
+{% load static %}
 
 {% block content %}
-<h4><small>RECENT MOVIES</small></h4>
-    <hr>
+<div class="p-5 mb-5 text-white rounded-3 shadow-lg welcome-header">
+    <div class="container-fluid py-5 text-center">
+        <h1 class="display-3 fw-bold text-uppercase welcome-title">
+            Cinema World
+        </h1>
+        <p class="col-md-8 fs-4 mx-auto mb-4 fw-bold welcome-subtitle">
+            Your ultimate destination for movie reviews, classics, and new releases.
+        </p>
+        <a href="#movies-list" class="btn btn-warning btn-lg px-5 fw-bold text-uppercase shadow">
+            Browse Collection
+        </a>
+    </div>
+</div>
+
+<div id="movies-list" class="container mt-5">
+    <h2 class="pb-3 border-bottom text-uppercase fw-bold text-dark mb-4">
+        <span class="badge bg-warning text-dark me-2">NEW</span> Recent Releases
+    </h2>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
         {% for movie in movies %}
-            <div>
-                <h2><a href="{% url 'movie_detail' pk=movie.pk %}">{{ movie.title }}</a></h2>
-                <h5><span><i class="bi bi-calendar2-check movie-list-published-icon"></i></span> {{ movie.published_date }}</h5>
-                {% if movie.category %}
-                <h5><span><i class="bi bi-camera-reels movie-list-category-icon"></i> {{ movie.category }} </span></h5><br>
-                {% endif %}
-                <h5><span><i class="bi bi-person-workspace movie-list-written-by-icon"></i></span> Written by {{ movie.author }}</h5>
-                {% if movie.image %} <img class="movie-list-img" src="{{ movie.image.url }}"/> {% endif %}
-                <p>{{ movie.text|linebreaksbr }}</p>
-                <div style="clear: both"></div>
-                <hr>
+        <div class="col">
+            <div class="card h-100 shadow film-card">
+
+                <div class="position-relative">
+                    {% if movie.image %}
+                        <img src="{{ movie.image.url }}" class="card-image-main" alt="{{ movie.title }}">
+                    {% endif %}
+
+                    <span class="position-absolute top-0 end-0 m-2 badge rounded-pill rating-badge">
+                        <i class="bi bi-star-fill text-warning"></i> 8.5
+                    </span>
+                </div>
+
+                <div class="card-body custom-card p-4">
+                    <h5 class="movie-card-title mb-3">{{ movie.title }}</h5>
+
+                    <div class="info-movie-group">
+                        <div class="info-line">
+                            <i class="bi bi-calendar-check-fill text-primary me-2"></i>
+                            <span class="text-muted fw-bold small">Date:</span>
+                            <span class="small">{{ movie.published_date|date:"Y" }}</span>
+                        </div>
+
+                        <div class="info-line">
+                            <i class="bi bi-film text-danger me-2"></i>
+                            <span class="text-muted fw-bold small">Category:</span>
+                            <span class="small">{{ movie.category.name }}</span>
+                        </div>
+
+                    <div class="info-line">
+                        <i class="bi bi-person-badge text-success me-2"></i>
+                        <span class="text-muted fw-bold small">DIRECTOR:</span>
+                        <span class="small">
+                            {% if movie.director %}
+                                {{ movie.director.name }}
+                            {% else %}
+                                Unknown
+                            {% endif %}
+                        </span>
+                    </div>
+                </div>
             </div>
+                    <p class="movie-description">
+                        <i class="bi bi-quote text-silver"></i> {{ movie.text|truncatewords:15 }}
+                    </p>
+
+                <div class="card-footer bg-transparent border-0 pb-4">
+                    <a href="{% url 'movie_detail' pk=movie.pk %}" class="btn detail-movie-btn w-100 py-2 shadow-sm fw-bold">
+                        <i class="bi bi-eye me-2"></i> VIEW DETAILS
+                    </a>
+                </div>
+            </div>
+        </div>
         {% endfor %}
+    </div>
+</div>
 {% endblock content %}
