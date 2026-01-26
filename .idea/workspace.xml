@@ -4,16 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8bc43646-48f8-47be-a687-1ff153f64042" name="Changes" comment="Organized CSS file into logical sections: General , Movie List, Icons-Badges-Buttons(Shared), Shared Components , Movie Detail. Enhanced .detail-movie-btn with dynamic &quot;Neon-style&quot; hover effect. Created comment section for Old legacy CSS as backup. Created Director model and added it into the admin.py for full management in Django Admin. Made Migrations, Added foreign key of director to main model Movie. Added basic object-fit: cover; CSS for class card-image-main for every main image on the cards layout so every image looks consistent and keeps each image aspect ratio.">
-      <change afterPath="$PROJECT_DIR$/movie/static/images/movielogo.png" afterDir="false" />
+    <list default="true" id="8bc43646-48f8-47be-a687-1ff153f64042" name="Changes" comment="Changed and re-constructed sidebar, movie cards. Change Icons on sidebar and movie_list layouts also and added CSS on them. Refactor and created new classes to be able to use them as CSS selectors.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movie/static/css/movie.css" beforeDir="false" afterPath="$PROJECT_DIR$/movie/static/css/movie.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movie/templates/movie/about_us.html" beforeDir="false" afterPath="$PROJECT_DIR$/movie/templates/movie/about_us.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/movie/templates/movie/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/movie/templates/movie/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movie/templates/movie/movie_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/movie/templates/movie/movie_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movie/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/movie/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movie/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/movie/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,7 +130,7 @@
       <workItem from="1769198091791" duration="12347000" />
       <workItem from="1769221503713" duration="11070000" />
       <workItem from="1769273349214" duration="19996000" />
-      <workItem from="1769367379470" duration="19572000" />
+      <workItem from="1769367379470" duration="20536000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <option name="closed" value="true" />
@@ -195,7 +188,15 @@
       <option name="project" value="LOCAL" />
       <updated>1769232169485</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Changed and re-constructed sidebar, movie cards. Change Icons on sidebar and movie_list layouts also and added CSS on them. Refactor and created new classes to be able to use them as CSS selectors.">
+      <option name="closed" value="true" />
+      <created>1769389391663</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1769389391663</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -232,6 +233,7 @@
     <MESSAGE value="Added new model on models.py named Category, updated it on admin.py , changed movie_detail.html and movie_list.html(the detailed movie view and general movie list view) , filtered Movies based on category on views.py , installed Pillow library for images and added it through a media directory in the settings.py , updated movie/urls.py , made migrations, added bootstrap icons for published date , category and author, made some CSS and tried to fixed layouts on elements." />
     <MESSAGE value="Added search text box on left side of page, created about_us.html ,relocated about_us.html to the correct path templates/movie/directory,updated views.py to use Django Q for search on title or text, created small test layout for about us page." />
     <MESSAGE value="Organized CSS file into logical sections: General , Movie List, Icons-Badges-Buttons(Shared), Shared Components , Movie Detail. Enhanced .detail-movie-btn with dynamic &quot;Neon-style&quot; hover effect. Created comment section for Old legacy CSS as backup. Created Director model and added it into the admin.py for full management in Django Admin. Made Migrations, Added foreign key of director to main model Movie. Added basic object-fit: cover; CSS for class card-image-main for every main image on the cards layout so every image looks consistent and keeps each image aspect ratio." />
-    <option name="LAST_COMMIT_MESSAGE" value="Organized CSS file into logical sections: General , Movie List, Icons-Badges-Buttons(Shared), Shared Components , Movie Detail. Enhanced .detail-movie-btn with dynamic &quot;Neon-style&quot; hover effect. Created comment section for Old legacy CSS as backup. Created Director model and added it into the admin.py for full management in Django Admin. Made Migrations, Added foreign key of director to main model Movie. Added basic object-fit: cover; CSS for class card-image-main for every main image on the cards layout so every image looks consistent and keeps each image aspect ratio." />
+    <MESSAGE value="Changed and re-constructed sidebar, movie cards. Change Icons on sidebar and movie_list layouts also and added CSS on them. Refactor and created new classes to be able to use them as CSS selectors." />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed and re-constructed sidebar, movie cards. Change Icons on sidebar and movie_list layouts also and added CSS on them. Refactor and created new classes to be able to use them as CSS selectors." />
   </component>
 </project>
