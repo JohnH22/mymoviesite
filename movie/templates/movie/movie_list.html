@@ -43,19 +43,19 @@
                         <div class="info-line">
                             <i class="bi bi-calendar-check-fill text-primary me-2"></i>
                             <span class="text-muted fw-bold small">Date:</span>
-                            <span class="small">{{ movie.published_date|date:"Y" }}</span>
+                            <span class="small ms-2">{{ movie.published_date|date:"Y" }}</span>
                         </div>
 
                         <div class="info-line">
                             <i class="bi bi-film text-danger me-2"></i>
                             <span class="text-muted fw-bold small">Category:</span>
-                            <span class="small">{{ movie.category.name }}</span>
+                            <span class="small ms-2">{{ movie.category.name }}</span>
                         </div>
 
                     <div class="info-line">
-                        <i class="bi bi-person-badge text-success me-2"></i>
-                        <span class="text-muted fw-bold small">DIRECTOR:</span>
-                        <span class="small">
+                        <i class="bi bi-star-fill movie-list-written-by-icon me-2"></i>
+                        <span class="text-muted fw-bold small">Director:</span>
+                        <span class="small ms-2">
                             {% if movie.director %}
                                 {{ movie.director.name }}
                             {% else %}

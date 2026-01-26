@@ -2,46 +2,112 @@
 <!DOCTYPE html><html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Movies</title>
+        <title>Cinema World</title>
         <meta name="viewport” content=”width=device−width,initial−scale=1">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
         <link rel="stylesheet" href="{% static 'css/movie.css' %}">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+        <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Monoton&display=swap" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 
     </head>
     <body>
-    <div class="container-fluid">
-        <div class="row content">
-            <div class="col-sm-3 bg-light sidebar" style="padding: 20px 15px;">
-                <h4>My Blog</h4>
-                <hr>
-                <ul class="nav nav-pills flex-column">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'about_us' %}">About us</a>
-                    </li>
-                    <li style="margin-top: 20px;">
-                        <strong style="display: block; padding: 10px 15px 5px;">Search:</strong>
-                        <form type="get" action="/" style="padding: 0 15px;">
-                            <input type="text" name="txt" class="form-control">
-                            <input type="submit" value="Submit" class="btn btn-primary" style="margin-top: 10px; width: 100%;">
-                        </form>
-                    </li>
-                </ul>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 sidebar">
+        <div class="text-center mt-3 mb-2">
+            <img src="{% static 'images/movielogo.png' %}" alt="Logo" class="sidebar-main-logo">
+        </div>
+            <h2 class="sidebar-title text-center">
+                <i class="bi bi-camera-reels-fill sidebar-title-icon"></i><br> Cinema World
+            </h2>
+
+            <hr class="neon-divider">
+
+            <div class="mb-4">
+                <a href="/" class="sidebar-link">
+                    <i class="bi bi-house-heart-fill"></i> Home
+                </a>
+                <a href="{% url 'about_us' %}" class="sidebar-link">
+                    <i class="bi bi-question-diamond-fill"></i> About Us
+                </a>
             </div>
-            <div class="col-sm-9">
-                {% block content %}
-                {% endblock %}
-            </div>
+
+            <hr class="neon-divider">
+
+            <h3 class="sidebar-section-title">
+                <i class="bi bi-zoom-in"></i> Find Movies
+            </h3>
+            <form method="GET" action="/" class="px-2">
+                <div class="mb-3">
+                    <label class="sidebar-input-label"><i class="bi bi-pencil-square"></i>Title</label>
+                    <input type="text" name="txt" class="form-control sidebar-text-search-box" placeholder="Type here..." value="{{ request.GET.txt }}">
+                </div>
+
+                <div class="mb-3">
+                    <label class="sidebar-input-label"><i class="bi bi-tags-fill"></i>Category</label>
+                    <select name="cat" class="form-select searchable-select">
+                        <option value="">All Genres</option>
+                        {% for cat in categories %}
+                            <option value="{{ cat.id }}" {% if request.GET.cat == cat.id|stringformat:"i" %}selected{% endif %}>
+                                {{ cat.name }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="sidebar-input-label"><i class="bi bi-person-video2"></i>Director</label>
+                    <select name="dir" class="form-select searchable-select">
+                        <option value="">All Directors</option>
+                        {% for dir in directors %}
+                            <option value="{{ dir.id }}" {% if request.GET.dir == dir.id|stringformat:"i" %}selected{% endif %}>
+                                {{ dir.name }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <button type="submit" class="btn sidebar-filter-button w-100 fw-bold mt-2 text-uppercase">
+                    <i class="bi bi-lightning-fill"></i> Filter Results
+                </button>
+            </form>
+        </div>
+
+        <div class="col-sm-9" style="background-color: #2b2b2e; min-height: 100vh;">
+            {% block content %}
+            {% endblock %}
         </div>
     </div>
-<footer class="container-fluid">
-<p>Footer Text</p>
+</div>
+
+<footer class="container-fluid py-4 mt-auto">
+    <p class="mb-0">&copy; 2024 Cinema World - Crafted for Movie Lovers</p>
 </footer>
+
+<script>
+    $(document).ready(function() {
+        $('.searchable-select').select2({
+            width: '100%',
+            placeholder: "Select an option",
+            allowClear: true
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+        if (window.location.search.length > 0) {
+            $('html, body').animate({
+                scrollTop: $("#movies-list").offset().top
+            }, 600);
+        }
+    });
+</script>
 </body>
 </html>
