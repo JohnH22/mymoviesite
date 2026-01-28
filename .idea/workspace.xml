@@ -4,9 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8bc43646-48f8-47be-a687-1ff153f64042" name="Changes" comment="Changed and re-constructed sidebar, movie cards. Change Icons on sidebar and movie_list layouts also and added CSS on them. Refactor and created new classes to be able to use them as CSS selectors.">
+    <list default="true" id="8bc43646-48f8-47be-a687-1ff153f64042" name="Changes" comment="Added new favicon for the site, to test it!">
+      <change afterPath="$PROJECT_DIR$/movie/migrations/0005_movie_release_date.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/movie/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie/static/css/movie.css" beforeDir="false" afterPath="$PROJECT_DIR$/movie/static/css/movie.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/movie/templates/movie/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/movie/templates/movie/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie/templates/movie/movie_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/movie/templates/movie/movie_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie/templates/movie/movie_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/movie/templates/movie/movie_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/movie/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mymoviesite/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/mymoviesite/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,7 +138,8 @@
       <workItem from="1769198091791" duration="12347000" />
       <workItem from="1769221503713" duration="11070000" />
       <workItem from="1769273349214" duration="19996000" />
-      <workItem from="1769367379470" duration="20536000" />
+      <workItem from="1769367379470" duration="20755000" />
+      <workItem from="1769547916040" duration="19450000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <option name="closed" value="true" />
@@ -196,7 +205,15 @@
       <option name="project" value="LOCAL" />
       <updated>1769389391663</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Added new favicon for the site, to test it!">
+      <option name="closed" value="true" />
+      <created>1769389892147</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1769389892147</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -234,6 +251,7 @@
     <MESSAGE value="Added search text box on left side of page, created about_us.html ,relocated about_us.html to the correct path templates/movie/directory,updated views.py to use Django Q for search on title or text, created small test layout for about us page." />
     <MESSAGE value="Organized CSS file into logical sections: General , Movie List, Icons-Badges-Buttons(Shared), Shared Components , Movie Detail. Enhanced .detail-movie-btn with dynamic &quot;Neon-style&quot; hover effect. Created comment section for Old legacy CSS as backup. Created Director model and added it into the admin.py for full management in Django Admin. Made Migrations, Added foreign key of director to main model Movie. Added basic object-fit: cover; CSS for class card-image-main for every main image on the cards layout so every image looks consistent and keeps each image aspect ratio." />
     <MESSAGE value="Changed and re-constructed sidebar, movie cards. Change Icons on sidebar and movie_list layouts also and added CSS on them. Refactor and created new classes to be able to use them as CSS selectors." />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed and re-constructed sidebar, movie cards. Change Icons on sidebar and movie_list layouts also and added CSS on them. Refactor and created new classes to be able to use them as CSS selectors." />
+    <MESSAGE value="Added new favicon for the site, to test it!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added new favicon for the site, to test it!" />
   </component>
 </project>

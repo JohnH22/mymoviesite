@@ -80,16 +80,30 @@
             </form>
         </div>
 
-        <div class="col-sm-9" style="background-color: #2b2b2e; min-height: 100vh;">
+        <div class="col-sm-9 d-flex flex-column" style="background-color: #2b2b2e; min-height: 100vh; padding: 0;">
+            <div class="flex-grow-1 p-4">
             {% block content %}
             {% endblock %}
+            </div>
+
+
+            <footer class="container text-center">
+                <div class="container">
+                    <a href="/" class="footer-logo-text">CINEMA WORLD</a>
+                    <div class="footer-social-icons mt-3">
+                        <i class="bi bi-facebook"></i>
+                        <i class="bi bi-instagram"></i>
+                        <i class="bi bi-youtube"></i>
+                        <i class="bi bi-twitter-x"></i>
+                    </div>
+                    <div class="footer-copyright">
+                        &copy; 2026 Cinema World Collection. All Rights Reserved.
+                    </div>
+                </div>
+            </footer>
         </div>
     </div>
 </div>
-
-<footer class="container-fluid py-4 mt-auto">
-    <p class="mb-0">&copy; 2024 Cinema World - Crafted for Movie Lovers</p>
-</footer>
 
 <script>
     $(document).ready(function() {

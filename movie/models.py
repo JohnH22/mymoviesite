@@ -1,5 +1,3 @@
-from idlelib.debugobj_r import remote_object_tree_item
-
 from django.db import models
 from django.utils import timezone
 from django.conf import settings
@@ -10,6 +8,7 @@ class Movie(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     text = models.TextField()
+    release_date = models.DateField(null=True, blank=True)
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
     category = models.ForeignKey('Category' , null=True, on_delete=models.CASCADE)

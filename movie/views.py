@@ -8,7 +8,7 @@ def movie_list(request):
     txt = request.GET.get('txt', '')
     dir = request.GET.get('dir', '')
 
-    movies = Movie.objects.all().order_by('-published_date')
+    movies = Movie.objects.filter(published_date__lte=timezone.now()).order_by('-release_date')
 
 
 
@@ -21,7 +21,13 @@ def movie_list(request):
     if dir and dir.isdigit():
             movies = movies.filter(director_id=int(dir))
 
-    return render(request, 'movie/movie_list.html', {'movies': movies, 'categories': Category.objects.all(), 'directors': Director.objects.all()})
+    context = {
+        'movies': movies,
+        'categories': Category.objects.all(),
+        'directors': Director.objects.all(),
+    }
+
+    return render(request, 'movie/movie_list.html', context)
 
 def movie_detail(request, pk):
     movie = get_object_or_404(Movie, pk=pk)
