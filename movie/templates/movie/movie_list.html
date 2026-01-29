@@ -1,5 +1,6 @@
 {% extends 'movie/base.html' %}
 {% load static %}
+{% load movie_extras %}
 
 {% block content %}
 <div class="p-5 mb-5 text-white rounded-3 shadow-lg welcome-header">
@@ -32,7 +33,12 @@
                     {% endif %}
 
                     <span class="position-absolute top-0 end-0 m-2 badge rounded-pill rating-badge">
-                        <i class="bi bi-star-fill text-warning"></i> 8.5
+                        <i class="bi bi-star-fill text-warning"></i>
+                        {% if movie.display_rating %}
+                            {{ movie.display_rating|floatformat:1 }}
+                        {% else %}
+                            N/A
+                        {% endif %}
                     </span>
                 </div>
 
@@ -51,6 +57,14 @@
                             <span class="text-muted fw-bold small">Category:</span>
                             <span class="small ms-2">{{ movie.category.name }}</span>
                         </div>
+
+                        {% if movie.duration %}
+                        <div class="info-line">
+                            <i class="bi bi-clock-history text-warning me-2"></i>
+                            <span class="text-muted fw-bold small">Duration:</span>
+                            <span class="small ms-2"> {{ movie.duration|format_duration }} </span>
+                        </div>
+                        {% endif %}
 
                     <div class="info-line">
                         <i class="bi bi-star-fill movie-list-written-by-icon me-2"></i>

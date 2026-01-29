@@ -1,3 +1,4 @@
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 from django.utils import timezone
 from django.conf import settings
@@ -13,7 +14,8 @@ class Movie(models.Model):
     published_date = models.DateTimeField(blank=True, null=True)
     category = models.ForeignKey('Category' , null=True, on_delete=models.CASCADE)
     director = models.ForeignKey('Director', null=True, on_delete=models.CASCADE )
-    image = models.ImageField(null=True)
+    image = models.ImageField(upload_to='movies/%Y/%m/', null=True, blank=True)
+    duration = models.PositiveIntegerField(null=True, blank=True, help_text="Duration in minutes")
 
     def publish(self):
         self.published_date = timezone.now()
@@ -35,3 +37,13 @@ class Director(models.Model):
 
     def __str__(self):
         return self.name
+
+class Review(models.Model):
+    movie = models.ForeignKey('Movie', on_delete=models.CASCADE, related_name='reviews')
+    user_review = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    comment_review = models.TextField()
+    rating_review = models.PositiveSmallIntegerField( validators=[MinValueValidator(1), MaxValueValidator(5)])
+    posted_review = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return f"Review for {self.movie.title} by {self.user_review.username}"

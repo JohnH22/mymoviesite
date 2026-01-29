@@ -1,5 +1,6 @@
 {% extends 'movie/base.html' %}
 {% load static %}
+{% load movie_extras %}
 
 {% block content %}
     <div class="container mt-2">
@@ -12,7 +13,8 @@
                             <img class="movie-detail-main-img img-fluid shadow-lg" src="{{ movie.image.url }}" alt="{{ movie.title }}" />
                         {% endif %}
                         <div class="movie-detail-rating-tag">
-                            <i class="bi bi-star-fill text-warning"></i> 8.5
+                            <i class="bi bi-star-fill text-warning"></i>
+                            {% if average_rating %} {{ average_rating|floatformat:1 }} {% else %} N/A {% endif %}
                         </div>
                     </div>
 
@@ -21,6 +23,56 @@
                             <i class="bi bi-person-fill-check movie-list-written-by-icon"></i>
                             <span class="text-silver">ADDED BY:</span>
                             <span class="ms-1">{{ movie.author.username|upper }}</span>
+                        </div>
+                    </div>
+
+                    <div class="reviews-section mt-5">
+                        {% if user.is_authenticated %}
+                            <div class="review-form-container p-3 mb-5">
+                                <h4 class="text-warning text-uppercase fw-bold mb-3">Rate Movie</h4>
+                                <form method="POST">
+                                    {% csrf_token %}
+                                    <div class="mb-2">
+                                        {{ form.comment_review }}
+                                    </div>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <label class="text-silver small">Rating:</label>
+                                        {{ form.rating_review }}
+                                    </div>
+                                    <button type="submit" class="btn detail-movie-btn mt-3 w-100 py-1">
+                                        Submit Review
+                                    </button>
+                                </form>
+                            </div>
+                        {% else %}
+                            <div class="review-form-container p-4 mb-5 text-center border-dashed">
+                                <i class="bi bi-lock-fill text-warning fs-1 mb-3"></i>
+                                <h5 class="text-white"> Want to rate this movie? </h5>
+                                <p class="text-silver small">You must be logged in to leave a review. </p>
+                                <a href="{% url 'login' %}" class="btn detail-movie-btn px-4 mt-2">
+                                    <i class="bi bi-box-arrow-in-right me-2"></i> LOGIN NOW
+                                </a>
+                            </div>
+                        {% endif %}
+
+                        <h5 class="text-warning text-uppercase fw-bold mb-3"> Reviews ({{ reviews.count }})</h5>
+                        <div class="reviews-list">
+                            {% for review in reviews %}
+                                <div class="review-card mb-3 p-2">
+                                    <div class="d-flex justify-content-between">
+                                        <strong class="text-white small"> {{ review.user_review.username }}</strong>
+                                        <span class="text-warning small"> {{ review.rating_review }} ★ </span>
+                                    </div>
+                                    <p class="text-silver mt-1 mb-0 small"> "{{ review.comment_review }}"</p>
+                                </div>
+                            {% empty %}
+                                <div class="empty-reviews-box text-center p-4">
+                                    <i class="bi bi-chat-left-dots text-warning display-6 mb-2 d-block opacity-50"></i>
+                                    <h6 class="text-silver fw-bold mb-1"> No reviews yet. </h6>
+                                    <p class="text-muted small mb-0" style="font-size: 0.75rem;">
+                                        Be the first to share your thoughts about this movie! </p>
+                                </div>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
@@ -43,6 +95,14 @@
                     </div>
                     {% endif %}
 
+                    {% if movie.duration %}
+                        <div class="info-line info-line-animation">
+                            <i class="bi bi-clock-history text-warning"></i>
+                            <span class="text-muted fw-bold me-2"> {{ movie.duration|format_duration }} </span>
+                            <span> {{ movie.duration }} min </span>
+                        </div>
+                    {% endif %}
+
                     <div class="info-line info-line-animation">
                         <i class="bi bi-person-video movie-list-written-by-icon"></i>
                         <span class="text-muted fw-bold me-2">Director/Writer:</span>
@@ -59,14 +119,16 @@
                     </p>
                 </div>
 
+                <hr class="neon-divider">
+
+
                 <div class="mt-3 detail-movie-btn-container">
                     <a href="/" class="btn detail-movie-btn px-4 py-2">
                         <i class="bi bi-arrow-left me-2"></i> Back to Collection
                     </a>
                 </div>
+                </div>
             </div>
-
         </div>
     </div>
-</div>
 {% endblock content %}
