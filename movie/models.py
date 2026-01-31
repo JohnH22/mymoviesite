@@ -16,6 +16,7 @@ class Movie(models.Model):
     director = models.ForeignKey('Director', null=True, on_delete=models.CASCADE )
     image = models.ImageField(upload_to='movies/%Y/%m/', null=True, blank=True)
     duration = models.PositiveIntegerField(null=True, blank=True, help_text="Duration in minutes")
+    trailer_url = models.URLField(max_length=200, null=True, blank=True, help_text="Youtube Link (e.g., https://www.youtube.com/watch?v=...)" )
 
     def publish(self):
         self.published_date = timezone.now()

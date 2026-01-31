@@ -3,7 +3,7 @@
 {% load movie_extras %}
 
 {% block content %}
-    <div class="container mt-2">
+    <div class="container-fluid px-md-5 mt-2">
         <div class="movie-detail-container-box p-4 p-md-5">
             <div class="row">
 
@@ -25,11 +25,94 @@
                             <span class="ms-1">{{ movie.author.username|upper }}</span>
                         </div>
                     </div>
+                </div>
+
+                <div class="col-lg-7 text-white">
+                    <div class="d-flex justify-content-between align-items-start mb-4 gap-3">
+                        <h1 class="movie-detail-title title-res-fix mb-0"> {{ movie.title }}</h1>
+
+                        <a href="/" class="btn detail-movie-btn px-4 py-2 flex-shrink-0 shadow-lg top-back-btn">
+                            <i class="bi bi-arrow-left me-2"></i>
+                            <span class="fw-bold">Back to Collection</span>
+                        </a>
+                    </div>
+
+                    <div class="info-movie-group my-3">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="info-line info-line-animation mb-2">
+                                    <i class="bi bi-calendar-check-fill text-primary"></i>
+                                    <span class="text-muted fw-bold small ms-1">Release:</span>
+                                    <span>{{ movie.release_date|date:"F d, Y" }}</span>
+                                </div>
+
+                                {% if movie.category %}
+                                <div class="info-line info-line-animation">
+                                    <i class="bi bi-film text-danger"></i>
+                                    <span class="text-muted fw-bold small ms-1">Genre:</span>
+                                    <span class="badge bg-danger px-2 ms-1">{{ movie.category }}</span>
+                                </div>
+                                {% endif %}
+                            </div>
+
+
+                            <div class="col-md-6 border-md-start border-secondary">
+                                {% if movie.duration %}
+                                <div class="info-line info-line-animation mb-2">
+                                    <i class="bi bi-clock-history text-warning"></i>
+                                    <span class="text-muted fw-bold small ms-1"> Duration: </span>
+                                    <span class="small ms-1">
+                                        {{ movie.duration|format_duration }}
+                                        <span class="text-muted"> {{ movie.duration }} min </span>
+                                    </span>
+                                </div>
+                                {% endif %}
+                                <div class="info-line info-line-animation">
+                                    <i class="bi bi-person-video movie-list-written-by-icon"></i>
+                                    <span class="text-muted fw-bold small ms-1">Director/Writer:</span>
+                                    <span class="small ms-1">{{ movie.director.name }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <hr class="neon-divider">
+
+                    <div class="movie-detail-text-content mt-4">
+                        <h4 class="text-uppercase fw-bold text-warning mb-3">Synopsis</h4>
+                        <p class="movie-description-full">
+                            {{ movie.text|linebreaksbr }}
+                        </p>
+                    </div>
+
+
+                    {% if movie.trailer_url %}
+                    <div class="movie-trailer-section mt-4 mb-2">
+                        <h4 class="text-uppercase fw-bold text-warning mb-3">
+                            <i class="bi bi-play-btn-fill me-2"></i> Official Trailer
+                        </h4>
+                        <div class="ratio ratio-16x9 shadow-lg rounded-3 overflow-hidden border border-secondary">
+                            <iframe src="{{ movie.trailer_url|youtube_embed }}"
+                                    title="Youtube video player"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share;"
+                                    referrerpolicy="strict-origin-when-cross-origin"
+                                    allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+                    {% endif %}
+
+
+                    <hr class="neon-divider">
+
 
                     <div class="reviews-section mt-5">
+                        <h4 class="text-warning text-uppercase fw-bold mb-4">Community Reviews</h4>
                         {% if user.is_authenticated %}
                             <div class="review-form-container p-3 mb-5">
-                                <h4 class="text-warning text-uppercase fw-bold mb-3">Rate Movie</h4>
+                                <h5 class="text-warning text-uppercase fw-bold mb-3">Rate Movie</h5>
                                 <form method="POST">
                                     {% csrf_token %}
                                     <div class="mb-2">
@@ -46,8 +129,8 @@
                             </div>
                         {% else %}
                             <div class="review-form-container p-4 mb-5 text-center border-dashed">
-                                <i class="bi bi-lock-fill text-warning fs-1 mb-3"></i>
-                                <h5 class="text-white"> Want to rate this movie? </h5>
+                                <i class="bi bi-lock-fill text-warning fs-3 mb-2"></i>
+                                <h6 class="text-white"> Want to rate this movie? </h6>
                                 <p class="text-silver small">You must be logged in to leave a review. </p>
                                 <a href="{% url 'login' %}" class="btn detail-movie-btn px-4 mt-2">
                                     <i class="bi bi-box-arrow-in-right me-2"></i> LOGIN NOW
@@ -75,58 +158,6 @@
                             {% endfor %}
                         </div>
                     </div>
-                </div>
-
-                <div class="col-lg-7 text-white">
-                    <h1 class="movie-detail-title"> {{ movie.title }}</h1>
-
-                <div class="info-movie-group my-3">
-                    <div class="info-line info-line-animation">
-                        <i class="bi bi-calendar-check-fill text-primary"></i>
-                        <span class="text-muted fw-bold me-2">Release:</span>
-                        <span>{{ movie.release_date|date:"F d, Y" }}</span>
-                    </div>
-
-                    {% if movie.category %}
-                    <div class="info-line info-line-animation">
-                        <i class="bi bi-film text-danger"></i>
-                        <span class="text-muted fw-bold me-2">Genre:</span>
-                        <span class="badge bg-danger px-3">{{ movie.category }}</span>
-                    </div>
-                    {% endif %}
-
-                    {% if movie.duration %}
-                        <div class="info-line info-line-animation">
-                            <i class="bi bi-clock-history text-warning"></i>
-                            <span class="text-muted fw-bold me-2"> {{ movie.duration|format_duration }} </span>
-                            <span> {{ movie.duration }} min </span>
-                        </div>
-                    {% endif %}
-
-                    <div class="info-line info-line-animation">
-                        <i class="bi bi-person-video movie-list-written-by-icon"></i>
-                        <span class="text-muted fw-bold me-2">Director/Writer:</span>
-                        <span>{{ movie.director.name }}</span>
-                    </div>
-                </div>
-
-                <hr class="neon-divider">
-
-                <div class="movie-detail-text-content mt-4">
-                    <h4 class="text-uppercase fw-bold text-warning mb-3">Synopsis</h4>
-                    <p class="movie-description-full">
-                        {{ movie.text|linebreaksbr }}
-                    </p>
-                </div>
-
-                <hr class="neon-divider">
-
-
-                <div class="mt-3 detail-movie-btn-container">
-                    <a href="/" class="btn detail-movie-btn px-4 py-2">
-                        <i class="bi bi-arrow-left me-2"></i> Back to Collection
-                    </a>
-                </div>
                 </div>
             </div>
         </div>
