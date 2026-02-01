@@ -18,14 +18,27 @@
                         </div>
                     </div>
 
-                    <div class="mt-2">
-                        <div class="author-badge-detail">
-                            <i class="bi bi-person-fill-check movie-list-written-by-icon"></i>
-                            <span class="text-silver">ADDED BY:</span>
-                            <span class="ms-1">{{ movie.author.username|upper }}</span>
+
+                <div class="d-flex align-items-center justify-content-center flex-wrap gap-2 mt-3">
+
+                    {% if movie.imdb_score %}
+                    <div class="imdb-rating-container">
+                        <div class="imdb-badge-box">
+                            <span class="imdb-label">IMDb</span>
+                            <span class="imdb-score-number">{{ movie.imdb_score }}</span>
+                            <span class="imdb-out-of">/10</span>
                         </div>
                     </div>
+                    {% endif %}
+
+
+                    <div class="author-badge-detail">
+                        <i class="bi bi-person-fill-check movie-list-written-by-icon"></i>
+                        <span class="text-silver">ADDED BY:</span>
+                        <span class="ms-1">{{ movie.author.username|upper }}</span>
+                    </div>
                 </div>
+            </div>
 
                 <div class="col-lg-7 text-white">
                     <div class="d-flex justify-content-between align-items-start mb-4 gap-3">
@@ -63,13 +76,12 @@
                                     <span class="text-muted fw-bold small ms-1"> Duration: </span>
                                     <span class="small ms-1">
                                         {{ movie.duration|format_duration }}
-                                        <span class="text-muted"> {{ movie.duration }} min </span>
                                     </span>
                                 </div>
                                 {% endif %}
                                 <div class="info-line info-line-animation">
                                     <i class="bi bi-person-video movie-list-written-by-icon"></i>
-                                    <span class="text-muted fw-bold small ms-1">Director/Writer:</span>
+                                    <span class="text-muted fw-bold small ms-1">Director:</span>
                                     <span class="small ms-1">{{ movie.director.name }}</span>
                                 </div>
                             </div>
