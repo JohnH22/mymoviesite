@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8bc43646-48f8-47be-a687-1ff153f64042" name="Changes" comment="Transformed Sidebar into Mobile Responsive Sidebar (Offcanvas) so it pops through a filter button when pressed into tablets and mobile devices for easier access and space management. Added the small button with filter icon. Edited Django Mode Alerts with CSS matching the site theme and created message for user posting his review with the new CSS edited Django Mode Alerts. Created javascript file and added Auto-hide Alerts after 4 seconds so they go away from users UI smoothly. Added new option (Clearable Filters) so the user can clear his choice on both dropdown select menus easily.&#10;Transferred all the javascript code from base.html file to new animations.js file for all JavaScript codes for better organization (Added comments for each JS too). Corrected Model Category appearing on DjangoAdmin panel from Categorys (wrong plural) to Categories through adding class Meta section on models.py file on the Category model.">
+    <list default="true" id="8bc43646-48f8-47be-a687-1ff153f64042" name="Changes" comment="Made small CSS change on custom-info-line-border new class for mobile-table device view only of movie_detail page. (The &lt;hr&gt; like line that divides the 4 info-line elements into 2 and 2 so they fit in the smaller devices view , made like hr neon-divider class)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movie/static/css/movie.css" beforeDir="false" afterPath="$PROJECT_DIR$/movie/static/css/movie.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movie/templates/movie/movie_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/movie/templates/movie/movie_detail.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,7 +135,7 @@
       <workItem from="1769646684298" duration="14117000" />
       <workItem from="1769801410954" duration="19549000" />
       <workItem from="1769972175665" duration="10784000" />
-      <workItem from="1770073267485" duration="12636000" />
+      <workItem from="1770073267485" duration="13298000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <option name="closed" value="true" />
@@ -251,7 +249,15 @@
       <option name="project" value="LOCAL" />
       <updated>1770084855537</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Made small CSS change on custom-info-line-border new class for mobile-table device view only of movie_detail page. (The &lt;hr&gt; like line that divides the 4 info-line elements into 2 and 2 so they fit in the smaller devices view , made like hr neon-divider class)">
+      <option name="closed" value="true" />
+      <created>1770087206769</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1770087206769</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -295,6 +301,7 @@
     <MESSAGE value="Created new field on Movie model , on models.py trailer_url to added trailer of each movie. Made migrations. Created new filter on movie_extras.py to transform a YouTube URL into an embed one.&#10;Added YouTube trailer integration in movie_detail with 16:9 aspect ratio. Fixed critical varius responsive issues in movie_detail container. Implemented flex-direction: column-reverse for header to place 'Back' button above title on mobile. Adjusted info-lines with flex-wrap and box-sizing to prevent overflow on small screens. Set trailer width to (calc 100% + offset) for better mobile User Experience. Cleaned up extra not needed Media Queries in CSS and synchronized breakpoints. Fixed container margins/paddings to keep all elements inside the screen width on mobile (Fixed mobile layout overflow). Stabilized sidebar and main-content alignment for 768px and 576px viewports. Fixed issues on base.html with sidebar padding and main content container so there are no gaps." />
     <MESSAGE value="Added new field on main Movie model (imdb_rating), made migrations. Added the new label on movie_detail.html also to make it appear on site. Added CSS for it and changed layouts with added by label so they are paralell to each other. Made UI alignment fixes. Changed placeholders colors to more bright and on click effect text color also brighter. Touched up a bit the hover effect on info-line to make the background color a bit more bright." />
     <MESSAGE value="Transformed Sidebar into Mobile Responsive Sidebar (Offcanvas) so it pops through a filter button when pressed into tablets and mobile devices for easier access and space management. Added the small button with filter icon. Edited Django Mode Alerts with CSS matching the site theme and created message for user posting his review with the new CSS edited Django Mode Alerts. Created javascript file and added Auto-hide Alerts after 4 seconds so they go away from users UI smoothly. Added new option (Clearable Filters) so the user can clear his choice on both dropdown select menus easily.&#10;Transferred all the javascript code from base.html file to new animations.js file for all JavaScript codes for better organization (Added comments for each JS too). Corrected Model Category appearing on DjangoAdmin panel from Categorys (wrong plural) to Categories through adding class Meta section on models.py file on the Category model." />
-    <option name="LAST_COMMIT_MESSAGE" value="Transformed Sidebar into Mobile Responsive Sidebar (Offcanvas) so it pops through a filter button when pressed into tablets and mobile devices for easier access and space management. Added the small button with filter icon. Edited Django Mode Alerts with CSS matching the site theme and created message for user posting his review with the new CSS edited Django Mode Alerts. Created javascript file and added Auto-hide Alerts after 4 seconds so they go away from users UI smoothly. Added new option (Clearable Filters) so the user can clear his choice on both dropdown select menus easily.&#10;Transferred all the javascript code from base.html file to new animations.js file for all JavaScript codes for better organization (Added comments for each JS too). Corrected Model Category appearing on DjangoAdmin panel from Categorys (wrong plural) to Categories through adding class Meta section on models.py file on the Category model." />
+    <MESSAGE value="Made small CSS change on custom-info-line-border new class for mobile-table device view only of movie_detail page. (The &lt;hr&gt; like line that divides the 4 info-line elements into 2 and 2 so they fit in the smaller devices view , made like hr neon-divider class)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Made small CSS change on custom-info-line-border new class for mobile-table device view only of movie_detail page. (The &lt;hr&gt; like line that divides the 4 info-line elements into 2 and 2 so they fit in the smaller devices view , made like hr neon-divider class)" />
   </component>
 </project>
