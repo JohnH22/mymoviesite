@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8bc43646-48f8-47be-a687-1ff153f64042" name="Changes" comment="Created new field on Movie model , on models.py trailer_url to added trailer of each movie. Made migrations. Created new filter on movie_extras.py to transform a YouTube URL into an embed one.&#10;Added YouTube trailer integration in movie_detail with 16:9 aspect ratio. Fixed critical varius responsive issues in movie_detail container. Implemented flex-direction: column-reverse for header to place 'Back' button above title on mobile. Adjusted info-lines with flex-wrap and box-sizing to prevent overflow on small screens. Set trailer width to (calc 100% + offset) for better mobile User Experience. Cleaned up extra not needed Media Queries in CSS and synchronized breakpoints. Fixed container margins/paddings to keep all elements inside the screen width on mobile (Fixed mobile layout overflow). Stabilized sidebar and main-content alignment for 768px and 576px viewports. Fixed issues on base.html with sidebar padding and main content container so there are no gaps." />
+    <list default="true" id="8bc43646-48f8-47be-a687-1ff153f64042" name="Changes" comment="Added new field on main Movie model (imdb_rating), made migrations. Added the new label on movie_detail.html also to make it appear on site. Added CSS for it and changed layouts with added by label so they are paralell to each other. Made UI alignment fixes. Changed placeholders colors to more bright and on click effect text color also brighter. Touched up a bit the hover effect on info-line to make the background color a bit more bright.">
+      <change afterPath="$PROJECT_DIR$/movie/static/js/animations.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie/static/css/movie.css" beforeDir="false" afterPath="$PROJECT_DIR$/movie/static/css/movie.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie/templates/movie/about_us.html" beforeDir="false" afterPath="$PROJECT_DIR$/movie/templates/movie/about_us.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie/templates/movie/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/movie/templates/movie/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie/templates/movie/movie_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/movie/templates/movie/movie_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/movie/views.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,6 +28,7 @@
         <option value="CSS File" />
         <option value="HTML File" />
         <option value="Python Script" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -131,6 +141,8 @@
       <workItem from="1769547916040" duration="20013000" />
       <workItem from="1769646684298" duration="14117000" />
       <workItem from="1769801410954" duration="19549000" />
+      <workItem from="1769972175665" duration="10784000" />
+      <workItem from="1770073267485" duration="10033000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <option name="closed" value="true" />
@@ -228,7 +240,15 @@
       <option name="project" value="LOCAL" />
       <updated>1769822823490</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Added new field on main Movie model (imdb_rating), made migrations. Added the new label on movie_detail.html also to make it appear on site. Added CSS for it and changed layouts with added by label so they are paralell to each other. Made UI alignment fixes. Changed placeholders colors to more bright and on click effect text color also brighter. Touched up a bit the hover effect on info-line to make the background color a bit more bright.">
+      <option name="closed" value="true" />
+      <created>1769981397013</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1769981397013</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -270,6 +290,7 @@
     <MESSAGE value="Added 'release_date' field to Movie model to track release date of each movie.&#10;Implemented staggered CSS animations (fade-in, slide-up) for movie cards, welcome header, and footer for a smooth visual effect.&#10;Refined Django Admin with new filters and list displays for the release_date field.&#10;Executed database migrations to support the updated schema.&#10;Fixed UI bugs related to animation and element visibility (opacity issues).&#10;Updated filters on movie list following the recent movies logic, all the movies ordered by release date.&#10;Switched language to 'en-us' for consistent English date formatting across the site.&#10;Enhanced footer design with social icons, neon effects improved responsiveness and animations." />
     <MESSAGE value="Added duration field to Movie model and Admin, created format_duration custom template  filter (minutes to h/min) inside new created directory (inside main directory movie) named templatetags with __init__.py file and movie_extras.py file that contains the filter code, Implemented movie reviews sections with empty state UI and animations plus created new model Reviews made migrations and connected it to Admin with filters and easy to function method with a lot of reviews. Backend and Frontend connection with new POST requests." />
     <MESSAGE value="Created new field on Movie model , on models.py trailer_url to added trailer of each movie. Made migrations. Created new filter on movie_extras.py to transform a YouTube URL into an embed one.&#10;Added YouTube trailer integration in movie_detail with 16:9 aspect ratio. Fixed critical varius responsive issues in movie_detail container. Implemented flex-direction: column-reverse for header to place 'Back' button above title on mobile. Adjusted info-lines with flex-wrap and box-sizing to prevent overflow on small screens. Set trailer width to (calc 100% + offset) for better mobile User Experience. Cleaned up extra not needed Media Queries in CSS and synchronized breakpoints. Fixed container margins/paddings to keep all elements inside the screen width on mobile (Fixed mobile layout overflow). Stabilized sidebar and main-content alignment for 768px and 576px viewports. Fixed issues on base.html with sidebar padding and main content container so there are no gaps." />
-    <option name="LAST_COMMIT_MESSAGE" value="Created new field on Movie model , on models.py trailer_url to added trailer of each movie. Made migrations. Created new filter on movie_extras.py to transform a YouTube URL into an embed one.&#10;Added YouTube trailer integration in movie_detail with 16:9 aspect ratio. Fixed critical varius responsive issues in movie_detail container. Implemented flex-direction: column-reverse for header to place 'Back' button above title on mobile. Adjusted info-lines with flex-wrap and box-sizing to prevent overflow on small screens. Set trailer width to (calc 100% + offset) for better mobile User Experience. Cleaned up extra not needed Media Queries in CSS and synchronized breakpoints. Fixed container margins/paddings to keep all elements inside the screen width on mobile (Fixed mobile layout overflow). Stabilized sidebar and main-content alignment for 768px and 576px viewports. Fixed issues on base.html with sidebar padding and main content container so there are no gaps." />
+    <MESSAGE value="Added new field on main Movie model (imdb_rating), made migrations. Added the new label on movie_detail.html also to make it appear on site. Added CSS for it and changed layouts with added by label so they are paralell to each other. Made UI alignment fixes. Changed placeholders colors to more bright and on click effect text color also brighter. Touched up a bit the hover effect on info-line to make the background color a bit more bright." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added new field on main Movie model (imdb_rating), made migrations. Added the new label on movie_detail.html also to make it appear on site. Added CSS for it and changed layouts with added by label so they are paralell to each other. Made UI alignment fixes. Changed placeholders colors to more bright and on click effect text color also brighter. Touched up a bit the hover effect on info-line to make the background color a bit more bright." />
   </component>
 </project>

@@ -258,6 +258,16 @@ body{
     font-style: italic !important;
 }
 
+.select2-selection__clear{
+    color: #ff0033 !important;
+    font-size: 1.2rem;
+    margin-right: 10px;
+}
+
+.select2-selection__clear:hover{
+    color: #ffffff !important;
+}
+
 .col-sm-9 {
     padding: 30px;
 }
@@ -1121,6 +1131,34 @@ div.imdb-badge-box:hover{
     text-shadow: 2px 2px 0 #000;
 }
 
+.reveal{
+    opacity: 0;
+    transform: translateY(40px) scale(0.98);
+    transition: all 0.8s cubic-bezier(0.175,0.885,0.32,1.275);
+    visibility: hidden;
+}
+
+.reveal.active{
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    visibility: visible;
+}
+
+@keyframes neonFlicker {
+    0% { opacity: 0.1; }
+    10% { opacity: 0.8; }
+    20% { opacity: 0.2; }
+    30% { opacity: 1; }
+    100% { opacity: 1; }
+}
+
+.reveal.active .movie-about-header-main{
+    animation: neonFlicker 1.2s ease-in-out;
+}
+
+
+
+
 /* REVIEW SECTION */
 
 .review-form-container{
@@ -1260,6 +1298,115 @@ div.imdb-badge-box:hover{
 }
 
 
+/* PAGINATION SECTION */
+
+.pagination{
+    gap: 8px;
+}
+
+.custom-pagination-btn{
+    background-color: #1a1a1d !important;
+    border: 1px solid rgba(255,0,51,0.4) !important;
+    color: #f8f9fa !important;
+    padding: 8px 16px !important;
+    border-radius: 6px !important;
+    font-weight: 600 !important;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    transition: all 0.3s cubic-bezier(0.4,0,0.2,1) !important;
+}
+
+.custom-pagination-btn:hover{
+    background-color: #ff0033 !important;
+    border-color: #ff0033 !important;
+    color: white !important;
+    box-shadow: 0 0 15px rgba(255,0,51,0.4) !important;
+    transform: translateY(-2px);
+}
+
+.custom-pagination-info{
+    background-color: rgba(255,255,255,0.05) !important;
+    border: 1px solid rgba(255,0,51,0.5) !important;
+    color: #bdc3c7 !important;
+    padding: 8px 16px !important;
+    border-radius: 6px !important;
+    font-size: 0.9rem;
+    pointer-events: none;
+}
+
+.custom-pagination-info .text-warning{
+    color: #fdd740 !important;
+    text-shadow: 0 0 5px rgba(253,215,64,0.2);
+}
+
+.page-link-focus{
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+
+
+
+/* CUSTOM DJANGO MESSAGES(ALERTS) */
+
+.custom-alert{
+    background-color: #1a1a1d !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-left: 5px solid #ff0033 !important;
+    border-radius: 8px !important;
+    padding: 1rem 1.5rem !important;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5), 0 0 10px rgba(255,0,51,0.2) !important;
+}
+
+.alert-success.custom-alert{
+    border-left-color: #2ecc71 !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5), 0 0 10px rgba(46,204,113,0.2);
+}
+
+.custom-alert i{
+    font-size: 1.2rem;
+}
+
+.custom-alert .btn-close{
+    filter: invert(1) grayscale(100%) brightness(200%);
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.custom-alert .btn-close:hover{
+    opacity: 1;
+}
+
+.alert.fade{
+    transition: opacity 0.5s linear, transform 0.5s ease-out !important;
+}
+
+
+/* MOBILE SIDEBAR (OFFCANVAS) */
+
+.sidebar-toggle-btn{
+    background-color: #ffcc00 !important;
+    color: #1a1a1d !important;
+    border: 2px solid #ffffff !important;
+    width: 60px;
+    height: 60px;
+    z-index: 1060;
+    box-shadow: 0 0 15px rgba(255,204,0,0.6) !important;
+    transition: transform 0.2s;
+}
+
+.sidebar-toggle-btn:active{
+    transform: scale(0.9);
+}
+
+.btn-close-white{
+    filter: invert(1) grayscale(100%) brightness(200%);
+}
+
 
 
 
@@ -1349,6 +1496,23 @@ div.imdb-badge-box:hover{
     .movie-description-full {
         font-size: 1rem !important;
         text-align: left !important;
+    }
+}
+
+@media (max-width: 991.98px){
+    .offcanvas-lg.sidebar{
+        background-color: #1a1a1d !important;
+        width: 280px !important;
+        border-right: 3px solid #ff0033 !important;
+    }
+
+    .offcanvas-header{
+        background: linear-gradient(to right, #1a1a1d, #330000);
+    }
+
+    .offcanvas-body{
+        overflow-y: auto;
+        padding-bottom: 80px !important;
     }
 }
 

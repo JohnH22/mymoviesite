@@ -4,6 +4,8 @@ from .models import Movie, Category, Director
 from django.db.models import Q
 from .forms import ReviewForm
 from django.db.models import Avg, F
+from django.core.paginator import Paginator
+from django.contrib import messages
 
 def movie_list(request):
     cat = request.GET.get('cat', '')
@@ -25,7 +27,12 @@ def movie_list(request):
     if dir and dir.isdigit():
             movies = movies.filter(director_id=int(dir))
 
-    for movie in movies:
+    paginator = Paginator(movies, 6)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+
+    for movie in page_obj:
         if movie.avg_raw:
             movie.display_rating = movie.avg_raw * 2
         else:
@@ -33,9 +40,12 @@ def movie_list(request):
 
 
     context = {
-        'movies': movies,
+        'page_obj': page_obj,
         'categories': Category.objects.all(),
         'directors': Director.objects.all(),
+        'current_cat': cat,
+        'current_txt': txt,
+        'current_dir': dir,
     }
 
     return render(request, 'movie/movie_list.html', context)
@@ -58,6 +68,7 @@ def movie_detail(request, pk):
                 review.movie = movie
                 review.user_review = request.user
                 review.save()
+                messages.success(request, "Your review has been posted successfully!")
                 return redirect('movie_detail', pk=pk)
         else:
             form = redirect('login')

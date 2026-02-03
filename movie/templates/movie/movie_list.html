@@ -23,7 +23,7 @@
     </h2>
 
     <div class="row row-cols-1 row-cols-md-3 g-4">
-        {% for movie in movies %}
+        {% for movie in page_obj %}
         <div class="col">
             <div class="card h-100 shadow film-card">
 
@@ -92,5 +92,40 @@
         </div>
         {% endfor %}
     </div>
+    <nav aria-label="Page navigation" class="mt-5 mb-5">
+        <ul class="pagination justify-content-center border-0">
+
+            {% if page_obj.has_previous %}
+                <li class="page-item">
+                    <a class="page-link custom-pagination-btn"
+                       href="?page=1{% if current_txt %}&txt={{ current_txt }} {% endif %} {% if current_cat %}&cat={{ current_cat }} {% endif %} {% if current_dir %}&dir={{ current_dir }} {% endif %}">
+                       <i class="bi bi-chevron-double-left"></i> First
+                    </a>
+                </li>
+            {% endif %}
+
+            <li class="page-item disabled">
+                <span class="page-link custom-pagination-info">
+                    Page <span class="text-warning fw-bold"> {{ page_obj.number }}</span> of {{ page_obj.paginator.num_pages }}
+                </span>
+            </li>
+
+            {% if page_obj.has_next %}
+                <li class="page-item">
+                    <a class="page-link custom-pagination-btn"
+                       href="?page={{ page_obj.next_page_number }}{% if current_txt %}&txt={{ current_txt }} {% endif %} {% if current_cat %}&cat={{ current_cat }} {% endif %} {% if current_dir %}&dir={{ current_dir }} {% endif %}">
+                       Next
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link custom-pagination-btn"
+                       href="?page={{ page_obj.paginator.num_pages }}{% if current_txt %}&txt={{ current_txt }} {% endif %} {% if current_cat %}&cat={{ current_cat }} {% endif %} {% if current_dir %}&dir={{ current_dir }} {% endif %}">
+                        Last <i class="bi bi-chevron-double-right"></i>
+                    </a>
+                </li>
+            {% endif %}
+
+        </ul>
+    </nav>
 </div>
 {% endblock content %}
