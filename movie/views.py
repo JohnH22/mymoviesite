@@ -6,6 +6,8 @@ from .forms import ReviewForm
 from django.db.models import Avg, F
 from django.core.paginator import Paginator
 from django.contrib import messages
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
 
 def movie_list(request):
     cat = request.GET.get('cat', '')
@@ -50,6 +52,8 @@ def movie_list(request):
 
     return render(request, 'movie/movie_list.html', context)
 
+
+
 def movie_detail(request, pk):
     movie = get_object_or_404(Movie, pk=pk)
 
@@ -83,5 +87,28 @@ def movie_detail(request, pk):
     }
     return render(request, 'movie/movie_detail.html', context)
 
+
+
 def about_us(request):
     return render(request, 'movie/about_us.html')
+
+
+def register(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            # Save user and log them in automatically using the custom case-insensitive backend.
+            user = form.save()
+            login(request, user, backend='movie.backends.CaseInsensitiveModelBackend')
+            return redirect('movie_list')
+    else:
+        form = UserCreationForm()
+        form.fields['username'].help_text = "Required. 20 characters or fewer."
+        form.fields['username'].widget.attrs['maxlength']= 20
+        # UI: Customize form fields with placeholders and specific constraints.
+        form.fields['username'].widget.attrs['placeholder']= "Choose a Username"
+        form.fields['password1'].widget.attrs['placeholder']= "Choose a Password"
+        form.fields['password2'].widget.attrs['placeholder'] = "Confirm your Password"
+
+
+    return render(request, 'registration/register.html', {'form': form})

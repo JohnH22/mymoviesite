@@ -1031,7 +1031,7 @@ div.imdb-badge-box:hover{
 .info-line{
     display: flex !important;
     align-items: flex-start !important;
-    gap: 8px !important;
+    gap: 10px !important;
     margin-bottom: 12px !important;
     padding: 10px 15px !important;
     background: rgba(255, 255, 255, 0.03);
@@ -1408,6 +1408,72 @@ div.imdb-badge-box:hover{
 }
 
 
+/* LOGIN-REGISTER */
+
+.sidebar-user-info{
+    background: rgba(255,255,255,0.05) !important;
+    padding: 10px !important;
+    border-radius: 8px !important;
+    border: 1px solid rgba(255,193,7,0.2) !important;
+}
+
+
+.review-form-container.border-dashed .help-text,
+.review-form-container.border-dashed .text-muted,
+.review-form-container.border-dashed ul {
+    color: #b0b0b0 !important;
+    font-size: 0.78rem;
+    line-height: 1.4;
+    list-style-type: none;
+    margin-top: 8px;
+    padding-left: 12px;
+    border-left: 2px solid rgba(255, 204, 0, 0.7) !important;
+    margin-bottom: 15px;
+}
+
+
+.review-form-container.border-dashed ul ul,
+.review-form-container.border-dashed .help-text ul,
+.review-form-container.border-dashed .text-muted ul,
+.review-form-container.border-dashed li {
+    border-left: none !important;
+    margin-top: 4px;
+    padding-left: 0;
+}
+
+
+.review-form-container.border-dashed .errorlist {
+    color: #ff0033 !important;
+    font-weight: bold;
+    font-size: 0.8rem;
+    list-style: none;
+    padding: 0;
+    border-left: none !important;
+}
+
+.login-page-back-to-movies{
+    color: #f0f0f0 !important;
+    font-size: 0.85rem;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.login-page-back-to-movies:hover{
+    color: #ffcc00 !important;
+    transform: translateX(-8px);
+}
+
+.login-page-back-to-movies i{
+    margin-right: 8px;
+    transition: margin-right 0.3s ease;
+}
+
+.login-page-back-to-movies:hover i{
+    transform: scale(1.3);
+}
+
 
 
 @media (max-width: 992px) {
@@ -1543,6 +1609,114 @@ div.imdb-badge-box:hover{
     }
 }
 
+/* ΤΕΛΙΚΗ ΛΥΣΗ: CLEAN LEFT ALIGNMENT (992px - 1600px) */
+@media (min-width: 992px) and (max-width: 1600px) {
+    .movie-detail-container-box .info-line {
+        display: block !important; /* Απλή ροή κειμένου */
+        padding: 15px !important;
+        min-height: 90px !important;
+        text-align: left !important;
+    }
+
+    /* Icon και Label στην ίδια γραμμή */
+    .movie-detail-container-box .info-line strong {
+        display: flex !important;
+        align-items: center !important;
+        font-size: 0.75rem !important;
+        color: #ffcc00 !important;
+        margin-bottom: 5px !important;
+        white-space: nowrap !important;
+    }
+
+    .movie-detail-container-box .info-line span.text-muted.fw-bold.small {
+        font-weight: 800 !important; /* Πολύ πιο heavy/bold */
+        font-size: 0.75rem !important;
+        letter-spacing: 1px !important;
+        text-transform: uppercase !important; /* Τα κάνει All Caps για να ταιριάζουν με το Fullscreen */
+    }
+
+    .movie-detail-container-box .info-line i {
+        vertical-align: middle !important;
+        margin-top: -2px !important;
+    }
+
+    /* Σταθερό εικονίδιο */
+    .movie-detail-container-box .info-line i,
+    .movie-detail-container-box .info-line svg {
+        width: 22px !important;
+        margin-right: 8px !important;
+        font-size: 1rem !important;
+        text-align: center !important;
+        flex-shrink: 0 !important;
+    }
+
+    /* Η Πληροφορία (Value) - Τέρμα τα κενά αριστερά */
+    .movie-detail-container-box .info-line span:not(.badge) {
+        display: block !important;
+        width: 100% !important;
+        padding-left: 0 !important; /* Καταργούμε το κενό που δημιουργούσε τη "σκάλα" */
+        margin-left: 0 !important;
+        font-size: 0.9rem !important;
+        color: #bdc3c7 !important;
+        font-weight: 500 !important;
+        line-height: 1.2 !important;
+        word-wrap: break-word !important;
+    }
+
+
+    /* Το Badge του Genre */
+    .movie-detail-container-box .info-line .badge {
+        display: inline-block !important;
+        margin-top: 5px !important;
+        margin-left: 0 !important;
+        font-size: 0.75rem !important;
+    }
+}
+
+
+
+
+
+/* ΔΙΟΡΘΩΣΗ ΓΙΑ TABLETS ΚΑΙ ΜΙΚΡΕΣ ΟΘΟΝΕΣ (Καλύπτει το 800x1000 - src_2) */
+@media (min-width: 768px) and (max-width: 1450px) {
+
+    .film-card .info-line {
+        display: flex !important;
+        flex-direction: column !important; /* Stack για να μη στριμώχνονται (src_2) */
+        align-items: flex-start !important;
+        padding: 5px 12px !important;
+        gap: 2px !important;
+        min-height: 52px !important;
+    }
+
+    /* Μόνο όταν πλατύνει αρκετά (Desktop-ish), τα βάζουμε δίπλα-δίπλα */
+    @media (min-width: 1200px) {
+        .film-card .info-line {
+            flex-direction: row !important;
+            align-items: center !important;
+        }
+
+        .film-card .info-line .text-muted.fw-bold.small {
+            flex: 0 0 85px !important;
+        }
+    }
+
+    /* Labels (DIRECTOR, κλπ) */
+    .film-card .info-line .text-muted.fw-bold.small {
+        font-size: 0.8rem !important;
+        margin: 0 !important;
+    }
+
+    /* Πληροφορία (Ονόματα) */
+    .film-card .info-line span:last-child {
+        font-size: 0.9rem !important;
+        color: #bdc3c7 !important;
+        text-align: left !important;
+        white-space: normal !important;
+        word-break: break-word !important;
+        line-height: 1.2 !important;
+    }
+}
 
 
 /* OLD LAYOUT

@@ -27,8 +27,6 @@ SECRET_KEY = 'django-insecure-(9wg5bz0bq(*_!#$=zwxh-#28s6o-fn6dwkmw_$i)ix56s&k5%
 DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.pythonanywhere.com']
-INSTALLED_APPS = [
-    'movie.apps.MovieConfig']
 
 
 
@@ -106,6 +104,12 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+AUTHENTICATION_BACKENDS = [
+    'movie.backends.CaseInsensitiveModelBackend',
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+
 # Internationalization
 # https://docs.djangoproject.com/en/6.0/topics/i18n/
 
@@ -125,3 +129,5 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+LOGIN_REDIRECT_URL = 'movie_list'
+LOGOUT_REDIRECT_URL = 'movie_list'
