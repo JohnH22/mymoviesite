@@ -2,12 +2,14 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from .models import Movie, Category, Director
 from django.db.models import Q
-from .forms import ReviewForm
+from .forms import ReviewForm, CustomUserCreationForm
 from django.db.models import Avg, F
 from django.core.paginator import Paginator
 from django.contrib import messages
 from django.contrib.auth import login
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import login as auth_login
+
 
 def movie_list(request):
     cat = request.GET.get('cat', '')
@@ -95,20 +97,55 @@ def about_us(request):
 
 def register(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             # Save user and log them in automatically using the custom case-insensitive backend.
             user = form.save()
             login(request, user, backend='movie.backends.CaseInsensitiveModelBackend')
             return redirect('movie_list')
     else:
-        form = UserCreationForm()
-        form.fields['username'].help_text = "Required. 20 characters or fewer."
-        form.fields['username'].widget.attrs['maxlength']= 20
-        # UI: Customize form fields with placeholders and specific constraints.
-        form.fields['username'].widget.attrs['placeholder']= "Choose a Username"
-        form.fields['password1'].widget.attrs['placeholder']= "Choose a Password"
-        form.fields['password2'].widget.attrs['placeholder'] = "Confirm your Password"
+        form = CustomUserCreationForm()
+
+        # Defining what each field "shows"
+        placeholders = {
+            'username': 'Choose a Username',
+            'email': 'Enter your Email Address',
+            'password1': 'Choose a Password',
+            'password2': 'Confirm your Password'
+        }
+
+        # For loop to pass all the settings to all the fields
+        for field_name, text in placeholders.items():
+            form.fields[field_name].widget.attrs.update({
+                'class': 'auth-input-style',
+                'placeholder': text
+            })
+
+        # The Username for the max length setting
+        form.fields['username'].help_text = "Requires 20 characters or fewer."
+        form.fields['username'].widget.attrs['maxlength'] = 20
 
 
     return render(request, 'registration/register.html', {'form': form})
+
+
+def login_view(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            user = form.get_user()
+            auth_login(request, user, backend='movie.backends.CaseInsensitiveModelBackend')
+            return redirect('movie_list')
+    else:
+        form = AuthenticationForm()
+        form.fields['username'].label = "Username or Email Address"
+        form.fields['username'].widget.attrs.update({
+            'class': 'auth-input-style',
+            'placeholder': 'Enter your Username or Email Address'
+        })
+        form.fields['password'].widget.attrs.update({
+            'class': 'auth-input-style',
+            'placeholder': 'Enter your Password'
+        })
+
+    return render(request, 'registration/login.html', {'form': form})

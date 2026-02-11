@@ -78,6 +78,24 @@ $(document).ready(function () {
 });
 
 
+/* PASSWORD VISIBILITY TOGGLE (SHOW/HIDE PASSWORD) */
+document.querySelectorAll('.password-toggle-icon').forEach(icon => {
+    icon.addEventListener('click', function () {
+        const input = this.previousElementSibling;
+
+        if (input.type === 'password') {
+            input.type = 'text';
+            this.classList.remove('bi-eye');
+            this.classList.add('bi-eye-slash');
+        } else {
+            input.type = 'password';
+            this.classList.remove('bi-eye-slash');
+            this.classList.add('bi-eye');
+        }
+    });
+});
+
+
 
 
 

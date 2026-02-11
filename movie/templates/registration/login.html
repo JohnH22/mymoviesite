@@ -10,16 +10,26 @@
             
             <form method="post" class="review-form">
                 {% csrf_token %}
-                
-                <div class="mb-3">
-                    <label class="text-silver small mb-1">Username</label>
-                    <input type="text" name="username" class="form-control bg-dark text-white border-secondary" required>
-                </div>
-                
-                <div class="mb-4">
-                    <label class="text-silver small mb-1">Password</label>
-                    <input type="password" name="password" class="form-control bg-dark text-white border-secondary" required>
-                </div>
+
+                {% for field in form %}
+                    <div class="mb-3">
+                        <label class="text-silver small mb-1"> {{ field.label }} </label>
+
+                        {# Change for the eye function so the user is able to see what he types as password #}
+                        {% if field.name == 'password' %}
+                            <div class="password-wrapper">
+                                {{ field }}
+                                <i class="bi bi-eye password-toggle-icon"></i>
+                            </div>
+                        {% else %}
+                            {{ field }}
+                        {% endif %}
+
+                        {% for error in field.errors %}
+                            <div class="text-danger small"> {{ error }}</div>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
 
                 <button type="submit" class="btn detail-movie-btn w-100 py-2 fw-bold">
                     SIGN IN

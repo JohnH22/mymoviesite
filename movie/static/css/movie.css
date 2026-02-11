@@ -1281,10 +1281,43 @@ div.imdb-badge-box:hover{
 }
 
 .empty-reviews-box i{
-    color: #ffcc00;
-    opacity: 0.5;
-    filter: drop-shadow(0 0 8px rgba(255,204,0,0.3));
+    color: #ffcc00 !important;
+    opacity: 0.9 !important;
+    filter: drop-shadow(0 0 12px rgba(255,204,0,0.6)) !important;
     animation: floatIcon 3s ease-in-out infinite;
+    display: inline-block;
+}
+
+.empty-reviews-callout{
+    font-size: 1rem !important;
+    color: #c9a000 !important;
+    font-style: italic;
+    text-align: center;
+    font-weight: 700;
+    margin-top: 10px;
+    opacity: 0.9;
+    letter-spacing: 0.3px;
+    text-decoration: underline !important;
+    text-underline-offset: 5px;
+    text-decoration-thickness: 1px;
+
+    transition: all 0.3s ease;
+}
+
+.empty-reviews-callout:hover{
+    opacity: 1;
+    cursor: default;
+    text-decoration-thickness: 2px;
+    color: #ffcc00 !important;
+}
+
+.empty-reviews-callout i {
+    color: #ffcc00 !important;
+    font-style: normal !important;
+    vertical-align: middle;
+    opacity: 1 !important;
+    font-size: 1.1rem;
+    filter: drop-shadow(0 0 5px rgba(255,204,0,0.5));
 }
 
 @keyframes floatIcon {
@@ -1417,47 +1450,83 @@ div.imdb-badge-box:hover{
     border: 1px solid rgba(255,193,7,0.2) !important;
 }
 
+.review-form-container label{
+    color: #ff0033 !important;
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    margin-bottom: 10px;
+    display: block;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
 
 .review-form-container.border-dashed .help-text,
 .review-form-container.border-dashed .text-muted,
-.review-form-container.border-dashed ul {
-    color: #b0b0b0 !important;
-    font-size: 0.78rem;
-    line-height: 1.4;
+.review-form-container.border-dashed ul,
+.review-form-container.border-dashed li,
+.helptext{
+    color: #BA8E23 !important;
+    font-size: 0.85rem;
+    line-height: 1.5;
     list-style-type: none;
     margin-top: 8px;
-    padding-left: 12px;
-    border-left: 2px solid rgba(255, 204, 0, 0.7) !important;
+    padding-left: 15px;
+    border-left: 3px solid rgba(255, 204, 0, 0.5) !important;
     margin-bottom: 15px;
+    transition: all 0.4s ease;
+}
+
+
+.mb-3:focus-within label{
+    color: #ffcc00 !important;
+    text-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+    transform: translateX(5px);
+    transition: all 0.3s ease;
+}
+
+.mb-3:focus-within .help-text,
+.mb-3:focus-within .text-muted,
+.mb-3:focus-within ul,
+.mb-3:focus-within li{
+    color: #ffcc00 !important;
+    border-left: 3px solid #ffcc00 !important;
+    font-size: 0.85rem !important;
+    transform: translateX(5px);
+    transition: all 0.3s ease;
 }
 
 
 .review-form-container.border-dashed ul ul,
 .review-form-container.border-dashed .help-text ul,
 .review-form-container.border-dashed .text-muted ul,
-.review-form-container.border-dashed li {
+.review-form-container.border-dashed li{
     border-left: none !important;
     margin-top: 4px;
     padding-left: 0;
+    color: inherit;
 }
 
 
-.review-form-container.border-dashed .errorlist {
+.review-form-container.border-dashed .errorlist{
     color: #ff0033 !important;
     font-weight: bold;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     list-style: none;
     padding: 0;
     border-left: none !important;
+    margin-bottom: 10px;
 }
 
 .login-page-back-to-movies{
-    color: #f0f0f0 !important;
-    font-size: 0.85rem;
+    color: #BA8E23 !important;
+    font-size: 0.9rem;
+    font-weight: 500;
     text-decoration: none;
     display: inline-flex;
     align-items: center;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    margin-top: 10px;
 }
 
 .login-page-back-to-movies:hover{
@@ -1473,6 +1542,81 @@ div.imdb-badge-box:hover{
 .login-page-back-to-movies:hover i{
     transform: scale(1.3);
 }
+
+.auth-input-style{
+    background: rgba(0, 0, 0, 0.7) !important;
+    color: #ffcc00 !important;
+    font-weight: 600;
+    border: 1px solid rgba(255, 204, 0, 0.3) !important;
+    border-radius: 8px !important;
+    padding: 12px 15px !important;
+    width: 100% !important;
+    transition: all 0.3s ease;
+    margin-bottom: 5px;
+}
+
+.auth-input-style:focus{
+    border-color: #ff0033 !important;
+    outline: none;
+    box-shadow: 0 0 15px rgba(255, 204, 0, 0.4) !important;
+    background: rgba(0, 0, 0, 0.9) !important;
+}
+
+.auth-input-style::placeholder{
+    color: #856404 !important;
+    opacity: 0.8;
+    transition: all 0.4s ease;
+    font-weight: 500;
+}
+
+/* For Firefox */
+.auth-input-style::-moz-placeholder{
+    color: #856404 !important;
+    opacity: 0.8;
+    transition: all 0.4s ease;
+}
+
+.auth-input-style:focus::placeholder{
+    color: #ffcc00 !important;
+    opacity: 1;
+    transform: translateX(5px);
+}
+
+/* For Firefox Focus */
+.auth-input-style:focus::-moz-placeholder{
+    color: #ffcc00 !important;
+    opacity: 1;
+}
+
+.password-wrapper{
+    position: relative;
+    display: block;
+}
+
+.password-toggle-icon{
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #BA8E23;
+    z-index: 10;
+    transition: color 0.3s ease;
+}
+
+.password-toggle-icon:hover{
+    color: #ffcc00;
+}
+
+.auth-input-style[type="password"]{
+    padding-right: 45px !important;
+}
+
+
+
+
+
+
 
 
 
@@ -1670,6 +1814,14 @@ div.imdb-badge-box:hover{
         margin-top: 5px !important;
         margin-left: 0 !important;
         font-size: 0.75rem !important;
+    }
+
+    .movie-detail-main-img{
+        height: 600px !important;
+        width: 100% !important;
+        object-fit: cover !important;
+        object-position: center !important;
+        border-radius: 15px !important;
     }
 }
 

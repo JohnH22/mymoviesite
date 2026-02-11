@@ -14,12 +14,22 @@
                 {% for field in form %}
                     <div class="mb-3">
                         <label class="text-silver small mb-1"> {{ field.label }} </label>
-                        {{ field }}
-                        {% if field.help_text %}
-                            <div class="text-muted" style="font-size: 0.7rem;">{{ field.help_text }}</div>
+
+                        {% if "password" in field.name %}
+                            <div class="password-wrapper">
+                                {{ field }}
+                                <i class="bi bi-eye password-toggle-icon" id="toggle-{{ field.id_for_label }}"></i>
+                            </div>
+                        {% else %}
+                            {{ field }}
                         {% endif %}
+
+                        {% if field.help_text %}
+                            <div class="text-muted"> {{ field.help_text|safe }}</div>
+                        {% endif %}
+
                         {% for error in field.errors %}
-                            <div class="text-danger small"> {{ error }} </div>
+                            <div class="text-danger small"> {{ error }}</div>
                         {% endfor %}
                     </div>
                 {% endfor %}
