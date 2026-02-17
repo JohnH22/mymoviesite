@@ -1,3 +1,4 @@
+import requests
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from .models import Movie, Category, Director
@@ -9,6 +10,23 @@ from django.contrib import messages
 from django.contrib.auth import login
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login as auth_login
+
+# Helper function for OMDb API
+def get_imdb_data(imdb_id):
+    api_key = '905975de'
+    url = f"https://www.omdbapi.com/?i={imdb_id}&apikey={api_key}"
+
+    try:
+        response = requests.get(url, timeout=5)
+        data = response.json()
+        if data.get('Response') == 'True' :
+            return {
+                'rating': data.get('imdbRating'),
+                'votes': data.get('imdbVotes'),
+            }
+    except requests.RequestException:
+        pass
+    return {'rating': None, 'votes': 'N/A'}
 
 
 def movie_list(request):
@@ -66,6 +84,21 @@ def movie_detail(request, pk):
     if average_rating:
         average_rating = average_rating * 2
 
+# LOGIC FOR IMDB SCORE (DYNAMIC OR MANUAL)
+    imdb_data = {'rating': None, 'votes': 'N/A'}
+
+#Try for API if there is ID
+    if movie.imdb_id:
+        imdb_data = get_imdb_data(movie.imdb_id)
+
+#Final score select
+    if imdb_data['rating'] and imdb_data['rating'] != 'N/A':
+        final_imdb_score = imdb_data['rating']
+    else:
+        #Fallback into the old manual insert field if API fails or doesn't exist
+        final_imdb_score = movie.imdb_score if movie.imdb_score else "N/A"
+
+
     if request.method == 'POST':
         if request.user.is_authenticated:
             form = ReviewForm(request.POST)
@@ -86,6 +119,8 @@ def movie_detail(request, pk):
         'reviews': reviews,
         'form': form,
         'average_rating': average_rating,
+        'imdb_rating': final_imdb_score,
+        'imdb_votes': imdb_data['votes'],
     }
     return render(request, 'movie/movie_detail.html', context)
 

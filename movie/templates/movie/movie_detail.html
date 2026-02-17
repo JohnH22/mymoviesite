@@ -21,12 +21,17 @@
 
                 <div class="d-flex align-items-center justify-content-center flex-wrap gap-2 mt-3">
 
-                    {% if movie.imdb_score %}
+                    {% if imdb_rating and imdb_rating != "N/A" %}
                     <div class="imdb-rating-container">
                         <div class="imdb-badge-box">
                             <span class="imdb-label">IMDb</span>
-                            <span class="imdb-score-number">{{ movie.imdb_score }}</span>
+                            <span class="imdb-score-number">{{ imdb_rating }}</span>
                             <span class="imdb-out-of">/10</span>
+                            {% if imdb_votes and imdb_votes != 'N/A' %}
+                                <div class="dynamic-imdb-votes">
+                                    {{ imdb_votes }} votes
+                                </div>
+                            {% endif %}
                         </div>
                     </div>
                     {% endif %}

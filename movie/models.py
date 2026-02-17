@@ -18,6 +18,7 @@ class Movie(models.Model):
     duration = models.PositiveIntegerField(null=True, blank=True, help_text="Duration in minutes")
     trailer_url = models.URLField(max_length=200, null=True, blank=True, help_text="Youtube Link (e.g., https://www.youtube.com/watch?v=...)" )
     imdb_score = models.DecimalField(max_digits=3, decimal_places=1, null=True, blank=True)
+    imdb_id = models.CharField(max_length=20, blank=True, null=True, help_text="Paste the IMDb ID (e.g., tt7286456) to get live scores automatically.")
 
     def publish(self):
         self.published_date = timezone.now()
